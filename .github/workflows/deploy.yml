@@ -2,7 +2,7 @@ name: Deploy Eleventy to GitHub Pages
 
 on:
   push:
-    branches: [ main ] # Or "master" depending on your branch name
+    branches: [ main ]
 
 permissions:
   contents: read
@@ -11,6 +11,11 @@ permissions:
 
 jobs:
   build-and-deploy:
+    # Add this block right here
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -33,7 +38,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: '_site' # This must match your output folder
+          path: '_site'
 
       - name: Deploy to GitHub Pages
         id: deployment
