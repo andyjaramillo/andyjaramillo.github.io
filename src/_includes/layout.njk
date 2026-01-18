@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title }} | Research Notes</title>
+    
+    <link rel="icon" href="/assets/favicon.png" type="image/png">
+    <link rel="apple-touch-icon" href="/assets/favicon.png">
+    
+    <link rel="stylesheet" href="/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Lora:italic,wght@0,400;1,400&display=swap" rel="stylesheet">
+</head>
+<body>
+<header class="site-header">
+    <div class="header-content">
+        <div class="brand">
+            <a href="/" class="site-title">Andreas Jaramillo</a>
+            <span class="discipline-tag">Machine Learning Theory • Digital Ethics • HCI</span>
+        </div>
+        
+        <div class="header-right">
+            <nav class="site-nav">
+                <a href="/about">About</a>
+                <a href="/archive">Archive</a>
+                <a href="/projects">Projects</a>
+                <a href="/press">Press</a>
+                <a href="/feed.xml" class="rss-link" aria-label="RSS Feed">
+                    <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" fill="none" stroke-width="2.5"><path d="M4 11a9 9 0 0 1 9 9"></path><path d="M4 4a16 16 0 0 1 16 16"></path><circle cx="5" cy="19" r="1"></circle></svg>
+                </a>
+            </nav>
+
+            <button id="theme-toggle" aria-label="Toggle Dark Mode">
+                <svg id="sun-icon" class="theme-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+                <svg id="moon-icon" class="theme-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:none;"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+            </button>
+        </div>
+    </div>
+</header>
+   <main>
+    <article>
+        {# Show the title and metadata ONLY if it's not the Home page #}
+        {% if title and title != "Home" %}
+            <h1>{{ title }}</h1>
+            <p class="metadata">Last updated: {{ page.date.toDateString() }}</p>
+        {% endif %}
+        
+        <div class="content">
+            {{ content | safe }}
+        </div>
+    </article>
+</main>
+
+    <footer>
+        <p>&copy; 2026 — Built with Eleventy</p>
+    </footer>
+
+    <script>
+    const toggle = document.getElementById('theme-toggle');
+    const sunIcon = document.getElementById('sun-icon');
+    const moonIcon = document.getElementById('moon-icon');
+    const doc = document.documentElement;
+
+    // Check for saved theme or system preference
+    const savedTheme = localStorage.getItem('theme') || 
+                      (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+    
+    setTheme(savedTheme);
+
+    toggle.addEventListener('click', () => {
+        const currentTheme = doc.getAttribute('data-theme');
+        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+        setTheme(newTheme);
+    });
+
+    function setTheme(theme) {
+        doc.setAttribute('data-theme', theme);
+        localStorage.setItem('theme', theme);
+        
+        if (theme === 'dark') {
+            sunIcon.style.display = 'none';
+            moonIcon.style.display = 'block';
+        } else {
+            sunIcon.style.display = 'block';
+            moonIcon.style.display = 'none';
+        }
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,77 @@
+---
+layout: layout.njk
+title: Research Archive
+---
+
+<section class="archive-section">
+    <div class="contact-header">
+        <hr class="line">
+        <h2>Research Archive</h2>
+        <hr class="line">
+    </div>
+
+<div class="filter-container">
+    <span class="filter-label">Filter by Topic:</span>
+    <div class="filter-buttons">
+        <button class="filter-btn active" data-filter="all">All</button>
+        {% for topic in topics.list %}
+            <button class="filter-btn" data-filter="{{ topic }}">{{ topic | capitalize }}</button>
+        {% endfor %}
+    </div>
+</div>
+
+<div class="blog-grid" id="blog-grid">
+    {% for post in collections.blog | reverse %}
+    <article class="blog-card" data-tags="{{ post.data.tags | join(' ') }}">
+        <a href="{{ post.url }}" class="blog-card-link">
+            <div class="blog-image-wrapper">
+                {% if post.data.image %}
+                    <img src="{{ post.data.image }}" alt="" class="blog-featured-img">
+                {% else %}
+                    <div class="blog-image-placeholder"></div>
+                {% endif %}
+            </div>
+            <div class="blog-card-content">
+                <div class="blog-meta">
+                    <time>{{ post.date.toLocaleDateString('en-US', { month: 'short', year: 'numeric' }) }}</time>
+                    <div class="tag-wrapper">
+                        {% for tag in post.data.tags %}
+                            {% if tag in topics.list %}
+                                <span class="blog-tag">{{ tag }}</span>
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                </div>
+                <h3>{{ post.data.title }}</h3>
+                <p>{{ post.data.description | default("Read the full entry...") }}</p>
+            </div>
+        </a>
+    </article>
+    {% endfor %}
+</div>
+</section>
+
+<script>
+    const buttons = document.querySelectorAll('.filter-btn');
+    const cards = document.querySelectorAll('.blog-card');
+
+    buttons.forEach(btn => {
+        btn.addEventListener('click', () => {
+            // Update Active State
+            buttons.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+
+            const filter = btn.getAttribute('data-filter');
+
+            cards.forEach(card => {
+                const tags = card.getAttribute('data-tags');
+                if (filter === 'all' || tags.includes(filter)) {
+                    card.style.display = 'block';
+                    card.style.opacity = '1';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        });
+    });
+</script>

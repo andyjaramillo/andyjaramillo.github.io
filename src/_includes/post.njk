@@ -1,0 +1,37 @@
+---
+layout: layout.njk
+---
+<article class="post-layout">
+    <header class="post-header">
+        <a href="/archive" class="back-link">← Back to archive</a>
+        
+        <div class="post-meta">
+            <time datetime="{{ page.date }}">
+                {{ page.date.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' }) }}
+            </time>
+            <span class="separator">•</span>
+            <span class="reading-time">Research Note</span>
+        </div>
+
+        <h1>{{ title }}</h1>
+
+        {% if tags %}
+        <div class="tag-container">
+            {% for tag in tags %}
+                {% if tag != "posts" %}
+                <span class="tag">#{{ tag }}</span>
+                {% endif %}
+            {% endfor %}
+        </div>
+        {% endif %}
+    </header>
+
+    <div class="post-content">
+        {{ content | safe }}
+    </div>
+
+    <section class="post-footer">
+        <hr>
+        <p><em>Found a typo or want to discuss this research? Feel free to reach out via email.</em></p>
+    </section>
+</article>

@@ -1,0 +1,147 @@
+---
+layout: layout.njk
+title: Home
+---
+
+<section class="intro-grid">
+    <div class="profile-photo">
+        <img src="/assets/profile.jpg" alt="Andreas Jaramillo" class="hero-img">
+    </div>
+
+    <div class="bio">
+        <h1>Hi, I'm Andreas Jaramillo.</h1>
+        <p class="lead">
+            I'm a researcher specializing in <strong>Human-Computer Interaction</strong> and <strong>Digital Ethics</strong>. 
+        </p>
+        <p>
+            Currently exploring minimalist design and information retention. Documenting my process and tinkering with open-source tools.
+        </p>
+        
+        <div class="social-links">
+            <a href="https://github.com/yourusername" aria-label="GitHub">
+                <svg viewBox="0 0 24 24" width="22" height="22" stroke="currentColor" fill="none" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+            </a>
+            <a href="https://linkedin.com/in/yourname" aria-label="LinkedIn">
+                <svg viewBox="0 0 24 24" width="22" height="22" stroke="currentColor" fill="none" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+            </a>
+            <span class="status-badge">Available for collab</span>
+        </div>
+    </div>
+</section>
+
+<hr class="section-divider">
+
+<section class="latest-work">
+      <div class="contact-header">
+        <hr class="line">
+        <h2>Latest Research Notes</h2>
+        <a href="/archive" class="view-all">View all archive →</a>
+        <hr class="line">
+    </div>
+
+ 
+
+    <div class="blog-grid">
+        {% for post in collections.blog | reverse | limit(3) %}
+        <article class="blog-card">
+            <a href="{{ post.url }}" class="blog-card-link" aria-label="{{ post.data.title }}">
+                <div class="blog-image-wrapper">
+                    {% if post.data.image %}
+                        <img src="{{ post.data.image }}" alt="" class="blog-featured-img">
+                    {% else %}
+                        <div class="blog-image-placeholder"></div>
+                    {% endif %}
+                </div>
+                <div class="blog-card-content">
+                    <time>{{ post.date.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }) }}</time>
+                    <h3>{{ post.data.title }}</h3>
+                    <p>{{ post.data.description | default("Exploring new findings in this latest research entry...") }}</p>
+                </div>
+            </a>
+        </article>
+        {% endfor %}
+    </div>
+</section>
+
+<section class="projects-section">
+    <div class="contact-header">
+        <hr class="line">
+        <h2>Selected Projects</h2>
+        <hr class="line">
+    </div>
+
+    <div class="project-summary">
+        <p>A selection of tools and prototypes developed through my research.</p>
+    </div>
+
+    <div class="projects-tile-grid">
+        {% for project in collections.projects | reverse | limit(3) %}
+        <article class="project-tile">
+            <a href="{{ project.url }}" class="tile-link">
+                <div class="tile-content">
+                    <span class="tile-category">{{ project.data.category }}</span>
+                    <h3>{{ project.data.title }}</h3>
+                    <p>{{ project.data.description }}</p>
+                </div>
+            </a>
+        </article>
+        {% endfor %}
+    </div>
+    
+    <div style="text-align: center; margin-top: 2rem;">
+        <a href="/projects" class="view-all">View all projects →</a>
+    </div>
+</section>
+
+<section class="subscribe-section">
+    <div class="contact-header">
+        <hr class="line">
+        <h2>Subscribe</h2>
+        <hr class="line">
+    </div>
+    <div class="subscribe-box">
+        <h3>Stay in the loop</h3>
+        <p>Get a monthly summary of my research and notes. No spam, ever.</p>
+        <form class="subscribe-form">
+            <input type="email" placeholder="email@example.com" required>
+            <button type="submit">Subscribe</button>
+        </form>
+        <p class="rss-hint">Or subscribe via <a href="/feed.xml">RSS Feed</a></p>
+    </div>
+</section>
+
+<section id="contact" class="contact-section">
+    <div class="contact-header">
+        <hr class="line">
+        <h2>Contact</h2>
+        <hr class="line">
+    </div>
+
+    <div class="contact-container">
+        <div class="contact-text">
+            <h3>Hi, I’m Andreas Jaramillo.</h3>
+            <p>
+                I prefer video chats via Google Meet. Feel free to schedule one with me using 
+                <a href="https://zcal.co/yourlink" class="link-blue">ZCal</a>.
+            </p>
+            <p>
+                If that is not an option, the best way to reach me is via Signal or 
+                <a href="mailto:andreas@example.com" class="link-blue">Email</a>.
+            </p>
+            
+            <div class="contact-icons">
+                <a href="https://linkedin.com/in/andreas-jaramillo" class="icon-circle">
+                    <img src="https://img.icons8.com/color/48/linkedin.png" alt="LinkedIn">
+                </a>
+                <a href="https://github.com/andyjaramillo" class="icon-circle">
+                    <img src="https://img.icons8.com/color/48/github--v1.png" alt="GitHub">
+                </a>
+            </div>
+            <small class="attribution">Icons by <a href="https://icons8.com">icons8.com</a></small>
+        </div>
+
+        <div class="contact-image">
+            <img src="/assets/profile.jpg" alt="Andreas Jaramillo" class="round-profile">
+        </div>
+    </div>
+</section>

@@ -1,0 +1,32 @@
+---
+layout: layout.njk
+title: All Projects
+permalink: /projects/
+---
+
+<section class="projects-archive">
+    <div class="contact-header">
+        <hr class="line">
+        <h2>Project Archive</h2>
+        <hr class="line">
+    </div>
+
+    <div class="projects-tile-grid">
+        {% for project in collections.projects | reverse %}
+        <article class="project-tile">
+            <a href="{{ project.url }}" class="tile-link">
+                {% if project.data.image %}
+                <div class="tile-image">
+                    <img src="{{ project.data.image }}" alt="">
+                </div>
+                {% endif %}
+                <div class="tile-content">
+                    <span class="tile-category">{{ project.data.category }}</span>
+                    <h3>{{ project.data.title }}</h3>
+                    <p>{{ project.data.description }}</p>
+                </div>
+            </a>
+        </article>
+        {% endfor %}
+    </div>
+</section>
