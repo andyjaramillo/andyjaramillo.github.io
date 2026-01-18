@@ -9,6 +9,13 @@ module.exports = function(eleventyConfig) {
     eleventyConfig.addFilter("limit", (array, limit) => {
         return array.slice(0, limit);
     });
+
+    eleventyConfig.addFilter("postDate", (dateObj) => {
+    return dateObj.toLocaleDateString('en-US', {
+      month: 'short',
+      year: 'numeric'
+    });
+  });
     // Set custom directories for input, output, includes, and data  
      return {    
         passthroughFileCopy: true,
