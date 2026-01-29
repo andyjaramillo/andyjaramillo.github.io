@@ -437,7 +437,9 @@ hr {
 }
 
 .subscribe-box {
-    background: #f8f9fa;
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
     padding: 2.5rem;
     border-radius: 12px;
     text-align: center;
@@ -627,16 +629,25 @@ hr {
 }
 
 .blog-card {
-    background: #fff;
-    border: 1px solid #eee;
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
     border-radius: 12px;
     overflow: hidden;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
 }
 
 .blog-card:hover {
     transform: translateY(-4px);
-    box-shadow: 0 12px 24px rgba(0,0,0,0.05);
+    /* Dynamic shadow: subtler in light, deeper/darker in dark mode */
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+    border-color: var(--accent-color); /* Subtle pop on hover */
+}
+
+.blog-image-placeholder {
+    width: 100%;
+    height: 100%;
+    /* Update placeholder to use your background/border colors */
+    background: linear-gradient(45deg, var(--border-color), var(--bg-color));
 }
 
 .blog-card-link {
@@ -812,10 +823,11 @@ hr {
     margin-top: 3rem;
 }
 
+
 .project-tile {
-    background: #fff;
-    border: 1px solid #f0f0f0;
-    border-radius: 8px;
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
     overflow: hidden;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     opacity: 0;
