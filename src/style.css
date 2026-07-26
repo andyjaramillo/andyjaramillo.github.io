@@ -1187,3 +1187,65 @@ hr {
     height: 20px;
 }
 
+.news-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    position: relative;
+    padding-left: 1.5rem;
+    border-left: 2px solid var(--border-color, #eaeaea);
+}
+
+.news-item {
+    position: relative;
+    background: var(--card-bg, #ffffff);
+    padding: 1.25rem 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.news-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+/* Timeline dot indicator */
+.news-item::before {
+    content: '';
+    position: absolute;
+    left: -1.86rem;
+    top: 1.5rem;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: var(--accent-color, #0066cc);
+    border: 2px solid var(--bg-color, #ffffff);
+}
+
+.news-meta {
+    margin-bottom: 0.35rem;
+}
+
+.news-date {
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--text-muted, #666666);
+}
+
+.news-title {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--text-main, #111111);
+    margin: 0 0 0.5rem 0;
+    line-height: 1.4;
+}
+
+.news-description {
+    font-size: 0.95rem;
+    color: var(--text-body, #444444);
+    margin: 0;
+    line-height: 1.5;
+}

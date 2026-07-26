@@ -12,11 +12,9 @@ title: Home
     <div class="bio">
         <h1>Hi, I'm Andreas Jaramillo.</h1>
         <p class="lead">
-            I'm a Robotics and ML researcher focused on <strong>high-performance autonomous systems</strong>. 
+          <b>Research Engineer</b> @ CACI. <b>Masters student</b> at JHU EP Applied and Computational Mathematics
         </p>
-        <p>
-            I specialize in optimizing computer vision and ML models to run on mobile GPUs. Currently bridging the gap between hardware-accelerated kernels and autonomous pathfinding.
-        </p>
+       
         
         <div class="social-links">
             <a href="https://github.com/andyjaramillo" aria-label="GitHub">
@@ -33,11 +31,34 @@ title: Home
 <hr class="section-divider">
 
 <section class="latest-work">
+    <div class="contact-header">
+        <hr class="line">
+        <h2>Latest News</h2>
+    </div>
+
+<div class="filter-container">
+    <div class="news-list">
+        {% for item in news.list %}
+        <article class="news-item">
+            <div class="news-meta">
+                <span class="news-date">{{ item.date }}</span>
+            </div>
+            <div class="news-content">
+                <h3 class="news-title">{{ item.title }}</h3>
+                <p class="news-description">{{ item.description }}</p>
+            </div>
+        </article>
+        {% endfor %}
+    </div>
+</div>
+</section>
+
+<section class="latest-work">
       <div class="contact-header">
         <hr class="line">
-        <h2>Latest Research Notes</h2>
+        <h2>Blog Posts</h2>
         <a href="/archive" class="view-all">View all archive →</a>
-        <hr class="line">
+   
     </div>
 
  
@@ -69,7 +90,6 @@ title: Home
     <div class="contact-header">
         <hr class="line">
         <h2>Selected Projects</h2>
-        <hr class="line">
     </div>
 
     <div class="project-summary">
@@ -96,7 +116,7 @@ title: Home
 </section>
 #}
 
-
+{#
 <section class="subscribe-section">
     <div class="contact-header">
         <hr class="line">
@@ -113,12 +133,13 @@ title: Home
         <p class="rss-hint">Or subscribe via <a href="/feed.xml">RSS Feed</a></p>
     </div>
 </section>
+#}
 
 <section id="contact" class="contact-section">
     <div class="contact-header">
         <hr class="line">
         <h2>Contact</h2>
-        <hr class="line">
+    
     </div>
 
     <div class="contact-container">

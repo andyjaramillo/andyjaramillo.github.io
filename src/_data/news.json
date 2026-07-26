@@ -1,0 +1,30 @@
+
+{
+  "list": [
+  {
+    "title": "Completed New Research Paper",
+    "date": "2026-07-01",
+    "description": "Finished writing and completing the paper titled 'When the Goal Varies: Learning Heuristics for Forward and Bidirectional Search'."
+  },
+  {
+    "title": "Accepted Research Engineer Job at CACI",
+    "date": "2026-03-01",
+    "description": "Started a new professional chapter as a Research Engineer at CACI."
+  },
+  {
+    "title": "Started JHU EP Applied & Computational Mathematics Master's",
+    "date": "2026-01-15",
+    "description": "Began graduate studies pursuing a Master's in Applied and Computational Mathematics at Johns Hopkins University (JHU EP)."
+  },
+  {
+    "title": "Graduated from JHU with Bachelor's in CS",
+    "date": "2025-12-15",
+    "description": "Successfully graduated from Johns Hopkins University with a Bachelor's degree in Computer Science."
+  },
+  {
+    "title": "Completed Google Internship",
+    "date": "2025-08-15",
+    "description": "Successfully wrapped up a rewarding software engineering internship experience at Google."
+  }
+]
+}
